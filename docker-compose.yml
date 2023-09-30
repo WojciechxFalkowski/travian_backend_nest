@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  nest_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_backend
+    environment:
+      - PORT=3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: ${PHPMYADMIN_IMAGE}
+    restart: always
+    ports:
+      - 8090:80
+    depends_on:
+      - db
+  db:
+    container_name: mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-vol:/var/lib/mysql
+
+volumes:
+  db-vol:
