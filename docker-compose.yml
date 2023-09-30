@@ -19,7 +19,7 @@ services:
     image: ${PHPMYADMIN_IMAGE}
     restart: always
     ports:
-      - 8090:80
+      - 8091:80
     depends_on:
       - db
   db:
