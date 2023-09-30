@@ -6,6 +6,6 @@ export default () => ({
         user: process.env.MYSQL_USER,
         database_name: process.env.MYSQL_DATABASE_NAME,
         host: process.env.DATABASE_HOST,
-        port: parseInt(process.env.DATABASE_PORT, 10) || 3307,
+        port: parseInt(process.env.DATABASE_PORT, 10) || 3308,
     }
 });
