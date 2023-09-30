@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: mysql
+    # container_name: mysql
     image: mysql:latest
     restart: always
     environment:
